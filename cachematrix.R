@@ -8,12 +8,13 @@ makeCacheMatrix <- function(x = matrix()) {
         m <<- NULL
     }
     get <- function() x
-    
+
     setInverse <- function(inv) m <<- inv
     getInverse <- function() m
+
     list(set = set, get = get,
-             setInverse = setInverse,
-             getInverse = getInverse)
+        setInverse = setInverse,
+        getInverse = getInverse)
 }
 
 ## This function computes the inverse of the special
@@ -26,8 +27,10 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")
         return(m)
     }
+
     data <- x$get()
     m <- solve(data, ...)
     x$setInverse(m)
+
     m
 }
